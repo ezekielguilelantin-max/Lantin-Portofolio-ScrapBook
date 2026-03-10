@@ -1,365 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Scrapbook — Home</title>
-<link rel="stylesheet" href="styles.css">
-<style>
-/* Hero */
-.hero {
-  padding: clamp(40px,7vw,80px) clamp(16px,4vw,48px) clamp(32px,5vw,56px);
-  max-width:1200px; margin:0 auto;
-  display:grid;
-  grid-template-columns: 1fr auto;
-  gap: 40px;
-  align-items: center;
-  position:relative; z-index:1;
-}
-@media(max-width:640px){.hero{grid-template-columns:1fr;text-align:center;}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — My Scrapbook</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Login Page Styles ── */
+    body.login-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-.hero-text .kicker {
-  display:inline-block;
-  font-size:0.72rem;
-  font-weight:700;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color: var(--gold);
-  background: rgba(201,148,58,0.1);
-  border:1px solid var(--border);
-  padding:5px 14px;
-  border-radius:30px;
-  margin-bottom:16px;
-}
-.hero-text h1 {
-  font-family:'Cormorant Garamond',serif;
-  font-size: clamp(2.4rem,5.5vw,4.2rem);
-  font-weight:700;
-  color:var(--dark);
-  line-height:1.08;
-  margin-bottom:12px;
-  letter-spacing:-0.02em;
-}
-.hero-text h1 em { color:var(--gold); font-style:italic; }
-.hero-text p { color:var(--muted); font-size:1.05rem; max-width:440px; line-height:1.7; }
-@media(max-width:640px){.hero-text p{margin:0 auto;}}
+    .login-container {
+      width: 100%;
+      max-width: 450px;
+      animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-/* profile photo */
-.hero-photo {
-  position:relative;
-}
-.hero-photo img {
-  width: clamp(140px,22vw,200px);
-  height: clamp(140px,22vw,200px);
-  border-radius: 50%;
-  object-fit:cover;
-  border:5px solid white;
-  box-shadow: 0 12px 50px rgba(28,26,46,0.2), 0 0 0 2px var(--gold);
-  display:block;
-}
-.hero-photo::before {
-  content:'';
-  position:absolute;
-  inset:-12px;
-  border-radius:50%;
-  border: 2px dashed var(--border);
-  animation: spin 25s linear infinite;
-}
-@keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-/* meta row */
-.hero-meta {
-  display:flex; gap:20px; margin-top:20px; flex-wrap:wrap;
-}
-@media(max-width:640px){.hero-meta{justify-content:center;}}
-.meta-chip {
-  display:flex;align-items:center;gap:6px;
-  font-size:0.82rem; color:var(--muted);
-  background:rgba(28,26,46,0.05);
-  border:1px solid var(--border);
-  padding:6px 14px; border-radius:30px;
-}
-.meta-chip svg { width:14px;height:14px;flex-shrink:0; }
+    .login-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(40px, 8vw, 60px);
+      box-shadow: 0 20px 60px rgba(28, 26, 46, 0.15);
+      backdrop-filter: blur(20px);
+    }
 
-/* section cards grid */
-.sections-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
-  gap: 24px;
-  max-width:1200px;
-  margin:0 auto;
-  padding: 0 clamp(16px,4vw,48px) 80px;
-  position:relative;z-index:1;
-}
+    .login-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-.section-card {
-  background: var(--glass);
-  border:1px solid var(--border);
-  border-radius: 20px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(10px);
-  text-decoration:none;
-  display:block;
-  transition: var(--transition);
-  cursor:none;
-  animation: fadeUp 0.6s both;
-}
-.section-card:hover { transform:translateY(-10px) scale(1.02); box-shadow:0 24px 60px rgba(28,26,46,0.2); }
+    .login-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
 
-.card-img-wrap {
-  position:relative;
-  overflow:hidden;
-  height:180px;
-}
-.card-img-wrap img {
-  width:100%; height:100%;
-  object-fit:cover;
-  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-  display:block;
-}
-.section-card:hover .card-img-wrap img { transform:scale(1.08); }
-.card-img-overlay {
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(28,26,46,0.5) 0%, transparent 60%);
-}
+    .login-logo span {
+      color: var(--gold);
+    }
 
-.card-content { padding:20px 22px 22px; }
-.card-icon { font-size:1.8rem; margin-bottom:8px; }
-.card-content h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.4rem; font-weight:700;
-  color:var(--dark); margin-bottom:4px;
-}
-.card-content p { color:var(--muted); font-size:0.85rem; margin-bottom:14px; }
-.card-arrow {
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:0.78rem; font-weight:600;
-  letter-spacing:0.05em;
-  padding:6px 14px; border-radius:30px;
-  transition:var(--transition);
-}
-.card-c .card-arrow { color:var(--coral); background:rgba(217,115,94,0.1); }
-.card-e .card-arrow { color:var(--sage); background:rgba(111,168,143,0.1); }
-.card-f .card-arrow { color:var(--gold); background:rgba(201,148,58,0.1); }
-.card-p .card-arrow { color:var(--rose); background:rgba(201,122,143,0.1); }
-.section-card:hover .card-arrow { padding-right:18px; }
+    .login-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
 
-/* top accent strip */
-.card-c { border-top:3px solid var(--coral); }
-.card-e { border-top:3px solid var(--sage); }
-.card-f { border-top:3px solid var(--gold); }
-.card-p { border-top:3px solid var(--rose); }
+    .form-group {
+      margin-bottom: 24px;
+    }
 
-/* section heading */
-.section-heading {
-  max-width:1200px; margin:0 auto;
-  padding: 0 clamp(16px,4vw,48px) 20px;
-  position:relative;z-index:1;
-}
-.section-heading h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.8rem; font-weight:700; color:var(--dark);
-}
-.section-heading p { color:var(--muted); font-size:0.9rem; margin-top:4px; }
-</style>
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: rgba(250, 246, 240, 0.5);
+      transition: var(--transition);
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: var(--cream);
+      box-shadow: 0 0 0 3px rgba(201, 148, 58, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(122, 111, 126, 0.6);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 100%);
+      color: var(--gold-lt);
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(28, 26, 46, 0.3);
+      margin-bottom: 16px;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(28, 26, 46, 0.35);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .remember-forgot label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-weight: 500;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .remember-forgot input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--gold);
+    }
+
+    .remember-forgot a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .remember-forgot a:hover {
+      color: var(--gold-lt);
+    }
+
+    .error-message {
+      background: rgba(217, 115, 94, 0.1);
+      border: 1.5px solid rgba(217, 115, 94, 0.3);
+      color: var(--coral);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      display: none;
+      animation: shake 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .success-message {
+      background: rgba(111, 168, 143, 0.1);
+      border: 1.5px solid rgba(111, 168, 143, 0.3);
+      color: var(--sage);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .divider-text {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .demo-info {
+      background: rgba(201, 148, 58, 0.08);
+      border: 1.5px solid rgba(201, 148, 58, 0.25);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .demo-info strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Theme toggle positioned at top right of login page */
+    .theme-toggle-login {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      z-index: 50;
+    }
+
+    .theme-toggle-login:hover {
+      transform: rotate(20deg) scale(1.08);
+      background: var(--parchment);
+      border-color: var(--gold);
+    }
+
+    body.dark-theme .theme-toggle-login:hover {
+      background: rgba(42, 37, 64, 0.8);
+    }
+  </style>
 </head>
-<body class="has-sidenav">
-<div id="cursor-dot"></div>
-<div id="cursor-glow"></div>
-<nav class="side-nav">
-  <a href="index.html" class="side-nav-item active" data-label="Home">🏠</a>
-  <div class="side-nav-divider"></div>
-  <a href="Collection.html" class="side-nav-item" data-label="Collection">📦</a>
-  <a href="Education.html" class="side-nav-item" data-label="Education">🎓</a>
-  <a href="Family.html" class="side-nav-item" data-label="Family">👨‍👩‍👧</a>
-  <a href="Personal.html" class="side-nav-item" data-label="Personal">💝</a>
-</nav>
+<body class="login-page">
+  <!-- Theme Toggle for Login Page -->
+  <button class="theme-toggle-login" id="themeToggleLogin" title="Toggle Dark/Light theme">🌙</button>
 
-<nav class="nav">
-  <a href="index.html" class="nav-brand">My <span>Scrapbook</span></a>
-  <div class="nav-actions">
-    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light theme">🌙</button>
-    <button class="btn btn-danger" onclick="logout()">Sign Out</button>
-  </div>
-</nav>
-
-<!-- Left Sidebar Nav -->
-<nav class="side-nav">
-  <a href="homepage.html" class="side-nav-item sn-home active" title="Home">
-    <div class="side-nav-pill">🏠</div>
-    <span class="side-nav-label">Home</span>
-  </a>
-  <div class="side-nav-sep"></div>
-  <a href="Collection.html" class="side-nav-item sn-collection" title="Collection">
-    <div class="side-nav-pill">📦</div>
-    <span class="side-nav-label">My Collection</span>
-  </a>
-  <a href="Education.html" class="side-nav-item sn-education" title="Education">
-    <div class="side-nav-pill">🎓</div>
-    <span class="side-nav-label">Education</span>
-  </a>
-  <a href="Family.html" class="side-nav-item sn-family" title="Family">
-    <div class="side-nav-pill">👨‍👩‍👧</div>
-    <span class="side-nav-label">Family</span>
-  </a>
-  <a href="Personal.html" class="side-nav-item sn-personal" title="Personal">
-    <div class="side-nav-pill">💝</div>
-    <span class="side-nav-label">Personal</span>
-  </a>
-</nav>
-
-<!-- Hero -->
-<section class="hero fade-up">
-  <div class="hero-text">
-    <div class="kicker">✦ Personal Scrapbook</div>
-    <h1>Hi, I'm<br><em>Ezekiel Guile</em><br>Lantin</h1>
-    <p>Welcome to my digital scrapbook — a collection of memories, milestones, and moments that shaped who I am today.</p>
-    <div class="hero-meta">
-      <div class="meta-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-        Quezon City
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">My <span>Scrapbook</span></div>
+        <p class="login-subtitle">Welcome back! Sign in to access your memories.</p>
       </div>
-      <div class="meta-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        Quirino High School
-      </div>
-      <div class="meta-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Class of 2026
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="success-message" id="successMessage"></div>
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            placeholder="Enter your username" 
+            required
+            autocomplete="username"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Enter your password" 
+            required
+            autocomplete="current-password"
+          >
+        </div>
+
+        <div class="remember-forgot">
+          <label>
+            <input type="checkbox" id="rememberMe">
+            Remember me
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Sign In</button>
+      </form>
+
+      <div class="divider-text">Demo Login</div>
+
+      <div class="demo-info">
+        <strong>Try these credentials:</strong>
+        Username: <strong style="color: var(--gold);">user</strong><br>
+        Password: <strong style="color: var(--gold);">password</strong>
       </div>
     </div>
   </div>
-  <div class="hero-photo">
-    <img src="Personal/p11.jpg" alt="Ezekiel Guile Lantin">
-  </div>
-</section>
 
-<div class="divider" style="max-width:1200px;margin:0 auto clamp(20px,3vw,36px);padding:0 clamp(16px,4vw,48px);"></div>
+  <script>
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggleLogin');
+    const html = document.documentElement;
 
-<div class="section-heading">
-  <h2>Explore My Story</h2>
-  <p>Click any chapter to browse photos and memories</p>
-</div>
+    // Check localStorage for theme preference
+    function initializeTheme() {
+      const savedTheme = localStorage.getItem('scrapbookTheme') || 'light';
+      html.classList.toggle('dark-theme', savedTheme === 'dark');
+      updateThemeToggle(savedTheme === 'dark');
+    }
 
-<div class="sections-grid">
-  <a href="Collection.html" class="section-card card-c fade-up">
-    <div class="card-img-wrap">
-      <img src="Collection/c5.jpg" alt="Collection" onerror="this.style.background='#f0e8d8'">
-      <div class="card-img-overlay"></div>
-    </div>
-    <div class="card-content">
-      <div class="card-icon">📦</div>
-      <h2>My Collection</h2>
-      <p>Things I love and collect</p>
-      <span class="card-arrow">View collection →</span>
-    </div>
-  </a>
+    function updateThemeToggle(isDark) {
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+      themeToggle.title = isDark ? 'Switch to Light theme' : 'Switch to Dark theme';
+    }
 
-  <a href="Education.html" class="section-card card-e fade-up">
-    <div class="card-img-wrap">
-      <img src="Education/e8.jfif" alt="Education" onerror="this.style.background='#f0e8d8'">
-      <div class="card-img-overlay"></div>
-    </div>
-    <div class="card-content">
-      <div class="card-icon">🎓</div>
-      <h2>Education</h2>
-      <p>My academic journey</p>
-      <span class="card-arrow">View journey →</span>
-    </div>
-  </a>
+    themeToggle.addEventListener('click', () => {
+      const isDark = html.classList.toggle('dark-theme');
+      localStorage.setItem('scrapbookTheme', isDark ? 'dark' : 'light');
+      updateThemeToggle(isDark);
+    });
 
-  <a href="Family.html" class="section-card card-f fade-up">
-    <div class="card-img-wrap">
-      <img src="Family/f5.jpg" alt="Family" onerror="this.style.background='#f0e8d8'">
-      <div class="card-img-overlay"></div>
-    </div>
-    <div class="card-content">
-      <div class="card-icon">👨‍👩‍👧</div>
-      <h2>Family</h2>
-      <p>The people who matter most</p>
-      <span class="card-arrow">View family →</span>
-    </div>
-  </a>
+    // Login Functionality
+    function handleLogin(event) {
+      event.preventDefault();
 
-  <a href="Personal.html" class="section-card card-p fade-up">
-    <div class="card-img-wrap">
-      <img src="Personal/p1.jpg" alt="Personal" onerror="this.style.background='#f0e8d8'">
-      <div class="card-img-overlay"></div>
-    </div>
-    <div class="card-content">
-      <div class="card-icon">💝</div>
-      <h2>Personal</h2>
-      <p>My life & personal moments</p>
-      <span class="card-arrow">View personal →</span>
-    </div>
-  </a>
-</div>
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('rememberMe').checked;
+      const successMsg = document.getElementById('successMessage');
+      const errorMsg = document.getElementById('errorMessage');
 
-<footer class="page-footer">
-  © 2025 Ezekiel Guile Lantin · My Digital Scrapbook
-</footer>
+      // Reset messages
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
 
-<script>
-// Authentication Check
-function checkAuthentication() {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
-  if (!isLoggedIn) {
-    window.location.href = 'login.html';
-  }
-}
+      // Simple validation (demo credentials)
+      const validUsername = 'user';
+      const validPassword = 'password';
 
-// Logout Function
-function logout() {
-  if (confirm('Are you sure you want to sign out?')) {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('rememberUsername');
-    window.location.href = 'login.html';
-  }
-}
+      if (username === validUsername && password === validPassword) {
+        // Show success message
+        successMsg.textContent = '✓ Login successful! Redirecting...';
+        successMsg.style.display = 'block';
 
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
+        // Save login state
+        localStorage.setItem('isLoggedIn', 'true');
+        if (rememberMe) {
+          localStorage.setItem('rememberUsername', username);
+        }
 
-function initializeTheme() {
-  const savedTheme = localStorage.getItem('scrapbookTheme') || 'light';
-  html.classList.toggle('dark-theme', savedTheme === 'dark');
-  updateThemeButton(savedTheme === 'dark');
-}
+        // Redirect to home after a brief delay
+        setTimeout(() => {
+          window.location.href = 'homepage.html';
+        }, 1000);
+      } else {
+        // Show error message
+        errorMsg.textContent = '✗ Invalid username or password. Please try again.';
+        errorMsg.style.display = 'block';
 
-function updateThemeButton(isDark) {
-  if (themeToggle) {
-    themeToggle.textContent = isDark ? '☀️' : '🌙';
-    themeToggle.title = isDark ? 'Switch to Light theme' : 'Switch to Dark theme';
-  }
-}
+        // Clear password field
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+      }
+    }
 
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    const isDark = html.classList.toggle('dark-theme');
-    localStorage.setItem('scrapbookTheme', isDark ? 'dark' : 'light');
-    updateThemeButton(isDark);
-  });
-}
+    // Pre-fill username if "Remember me" was checked
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeTheme();
+      const savedUsername = localStorage.getItem('rememberUsername');
+      if (savedUsername) {
+        document.getElementById('username').value = savedUsername;
+        document.getElementById('password').focus();
+      }
+    });
 
-// Cursor effect
-const dot=document.getElementById('cursor-dot'),glow=document.getElementById('cursor-glow');
-let mx=0,my=0,gx=0,gy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-(function loop(){gx+=(mx-gx)*0.12;gy+=(my-gy)*0.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{glow.style.transform='translate(-50%,-50%) scale(1.8)';glow.style.background='rgba(201,148,58,0.12)';});
-  el.addEventListener('mouseleave',()=>{glow.style.transform='translate(-50%,-50%) scale(1)';glow.style.background='transparent';});
-});
-
-// Initialize theme on page load
-document.addEventListener('DOMContentLoaded', () => {
-  checkAuthentication();
-  initializeTheme();
-});
-</script>
-<script src="sidenav.js"></script>
-<script>buildSidenav('home');</script>
+    // Allow Enter key to submit form
+    document.getElementById('loginForm').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleLogin(e);
+      }
+    });
+  </script>
 </body>
 </html>
