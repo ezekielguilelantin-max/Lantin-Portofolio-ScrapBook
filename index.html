@@ -249,6 +249,8 @@
   </style>
 </head>
 <body class="login-page">
+  <div id="cursor-dot"></div>
+  <div id="cursor-glow"></div>
   <!-- Theme Toggle for Login Page -->
   <button class="theme-toggle-login" id="themeToggleLogin" title="Toggle Dark/Light theme">🌙</button>
 
@@ -388,6 +390,14 @@
       if (e.key === 'Enter') {
         handleLogin(e);
       }
+    });
+    const dot=document.getElementById('cursor-dot'),glow=document.getElementById('cursor-glow');
+    let mx=0,my=0,gx=0,gy=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+    (function loop(){gx+=(mx-gx)*0.12;gy+=(my-gy)*0.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loop);})();
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{glow.style.transform='translate(-50%,-50%) scale(1.8)';glow.style.background='rgba(201,148,58,0.12)';});
+      el.addEventListener('mouseleave',()=>{glow.style.transform='translate(-50%,-50%) scale(1)';glow.style.background='transparent';});
     });
   </script>
 </body>
