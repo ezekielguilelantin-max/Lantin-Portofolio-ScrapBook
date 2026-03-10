@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — My Scrapbook</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Login Page Styles ── */
+    body.login-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 450px;
+      animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(40px, 8vw, 60px);
+      box-shadow: 0 20px 60px rgba(28, 26, 46, 0.15);
+      backdrop-filter: blur(20px);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .login-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .login-logo span {
+      color: var(--gold);
+    }
+
+    .login-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: rgba(250, 246, 240, 0.5);
+      transition: var(--transition);
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: var(--cream);
+      box-shadow: 0 0 0 3px rgba(201, 148, 58, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(122, 111, 126, 0.6);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 100%);
+      color: var(--gold-lt);
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(28, 26, 46, 0.3);
+      margin-bottom: 16px;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(28, 26, 46, 0.35);
+    }
+
+    .login-btn:active {
+      transform: translateY(0);
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .remember-forgot label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-weight: 500;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .remember-forgot input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--gold);
+    }
+
+    .remember-forgot a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .remember-forgot a:hover {
+      color: var(--gold-lt);
+    }
+
+    .error-message {
+      background: rgba(217, 115, 94, 0.1);
+      border: 1.5px solid rgba(217, 115, 94, 0.3);
+      color: var(--coral);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      display: none;
+      animation: shake 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .success-message {
+      background: rgba(111, 168, 143, 0.1);
+      border: 1.5px solid rgba(111, 168, 143, 0.3);
+      color: var(--sage);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .divider-text {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .demo-info {
+      background: rgba(201, 148, 58, 0.08);
+      border: 1.5px solid rgba(201, 148, 58, 0.25);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .demo-info strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Theme toggle positioned at top right of login page */
+    .theme-toggle-login {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      z-index: 50;
+    }
+
+    .theme-toggle-login:hover {
+      transform: rotate(20deg) scale(1.08);
+      background: var(--parchment);
+      border-color: var(--gold);
+    }
+
+    body.dark-theme .theme-toggle-login:hover {
+      background: rgba(42, 37, 64, 0.8);
+    }
+  </style>
+</head>
+<body class="login-page">
+  <!-- Theme Toggle for Login Page -->
+  <button class="theme-toggle-login" id="themeToggleLogin" title="Toggle Dark/Light theme">🌙</button>
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">My <span>Scrapbook</span></div>
+        <p class="login-subtitle">Welcome back! Sign in to access your memories.</p>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="success-message" id="successMessage"></div>
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            placeholder="Enter your username" 
+            required
+            autocomplete="username"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Enter your password" 
+            required
+            autocomplete="current-password"
+          >
+        </div>
+
+        <div class="remember-forgot">
+          <label>
+            <input type="checkbox" id="rememberMe">
+            Remember me
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Sign In</button>
+      </form>
+
+      <div class="divider-text">Demo Login</div>
+
+      <div class="demo-info">
+        <strong>Try these credentials:</strong>
+        Username: <strong style="color: var(--gold);">user</strong><br>
+        Password: <strong style="color: var(--gold);">password</strong>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggleLogin');
+    const html = document.documentElement;
+
+    // Check localStorage for theme preference
+    function initializeTheme() {
+      const savedTheme = localStorage.getItem('scrapbookTheme') || 'light';
+      html.classList.toggle('dark-theme', savedTheme === 'dark');
+      updateThemeToggle(savedTheme === 'dark');
+    }
+
+    function updateThemeToggle(isDark) {
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+      themeToggle.title = isDark ? 'Switch to Light theme' : 'Switch to Dark theme';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = html.classList.toggle('dark-theme');
+      localStorage.setItem('scrapbookTheme', isDark ? 'dark' : 'light');
+      updateThemeToggle(isDark);
+    });
+
+    // Login Functionality
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('rememberMe').checked;
+      const successMsg = document.getElementById('successMessage');
+      const errorMsg = document.getElementById('errorMessage');
+
+      // Reset messages
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      // Simple validation (demo credentials)
+      const validUsername = 'user';
+      const validPassword = 'password';
+
+      if (username === validUsername && password === validPassword) {
+        // Show success message
+        successMsg.textContent = '✓ Login successful! Redirecting...';
+        successMsg.style.display = 'block';
+
+        // Save login state
+        localStorage.setItem('isLoggedIn', 'true');
+        if (rememberMe) {
+          localStorage.setItem('rememberUsername', username);
+        }
+
+        // Redirect to home after a brief delay
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+      } else {
+        // Show error message
+        errorMsg.textContent = '✗ Invalid username or password. Please try again.';
+        errorMsg.style.display = 'block';
+
+        // Clear password field
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+      }
+    }
+
+    // Pre-fill username if "Remember me" was checked
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeTheme();
+      const savedUsername = localStorage.getItem('rememberUsername');
+      if (savedUsername) {
+        document.getElementById('username').value = savedUsername;
+        document.getElementById('password').focus();
+      }
+    });
+
+    // Allow Enter key to submit form
+    document.getElementById('loginForm').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleLogin(e);
+      }
+    });
+  </script>
+</body>
+</html>
