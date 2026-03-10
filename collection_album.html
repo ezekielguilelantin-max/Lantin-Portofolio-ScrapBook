@@ -79,12 +79,14 @@
 </nav>
 
 <nav class="nav">
-  <a href="homepage.html" class="nav-brand">My <span>Scrapbook</span></a>
+  <a href="index.html" class="nav-brand">My <span>Scrapbook</span></a>
   <div class="nav-actions">
     <a href="Collection.html" class="btn-back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
       Back
     </a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light theme">🌙</button>
+    <button class="btn btn-danger" onclick="logout()">Sign Out</button>
   </div>
 </nav>
 
@@ -149,17 +151,67 @@
 
 <footer class="page-footer">© 2025 Ezekiel Guile Lantin · My Digital Scrapbook</footer>
 <script>
+// Authentication Check
+function checkAuthentication() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if (!isLoggedIn) {
+    window.location.href = 'login.html';
+  }
+}
+
+// Logout Function
+function logout() {
+  if (confirm('Are you sure you want to sign out?')) {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('rememberUsername');
+    window.location.href = 'login.html';
+  }
+}
+
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+
+function initializeTheme() {
+  const savedTheme = localStorage.getItem('scrapbookTheme') || 'light';
+  html.classList.toggle('dark-theme', savedTheme === 'dark');
+  updateThemeButton(savedTheme === 'dark');
+}
+
+function updateThemeButton(isDark) {
+  if (themeToggle) {
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+    themeToggle.title = isDark ? 'Switch to Light theme' : 'Switch to Dark theme';
+  }
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isDark = html.classList.toggle('dark-theme');
+    localStorage.setItem('scrapbookTheme', isDark ? 'dark' : 'light');
+    updateThemeButton(isDark);
+  });
+}
+
+// Cursor effect
 const dot=document.getElementById('cursor-dot'),glow=document.getElementById('cursor-glow');
 let mx=0,my=0,gx=0,gy=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
 (function loop(){gx+=(mx-gx)*0.12;gy+=(my-gy)*0.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loop);})();
 
+// Lightbox functionality
 const imgs=[...document.querySelectorAll('#albumGrid img')];
 let cur=0;
 function openLB(i){cur=i;document.getElementById('lbImg').src=imgs[i].src;document.getElementById('lightbox').classList.add('active');}
 function closeLB(e){if(!e||e.target===document.getElementById('lightbox')||e.target.classList.contains('lb-close')){document.getElementById('lightbox').classList.remove('active');}}
 function shiftLB(d,e){if(e)e.stopPropagation();cur=(cur+d+imgs.length)%imgs.length;document.getElementById('lbImg').src=imgs[cur].src;}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')shiftLB(1);if(e.key==='ArrowLeft')shiftLB(-1);if(e.key==='Escape')closeLB();});
+
+// Initialize theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+  checkAuthentication();
+  initializeTheme();
+});
 </script>
 <script src="sidenav.js"></script>
 <script>buildSidenav('collection');</script>
