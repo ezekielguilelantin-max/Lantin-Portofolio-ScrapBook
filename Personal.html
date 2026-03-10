@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal — Scrapbook</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.info-section { border-top: 3px solid var(--rose); }
+</style>
+</head>
+<body class="has-sidenav">
+<div id="cursor-dot"></div>
+<div id="cursor-glow"></div>
+<nav class="side-nav">
+  <a href="homepage.html" class="side-nav-item" data-label="Home">🏠</a>
+  <div class="side-nav-divider"></div>
+  <a href="Collection.html" class="side-nav-item" data-label="Collection">📦</a>
+  <a href="Education.html" class="side-nav-item" data-label="Education">🎓</a>
+  <a href="Family.html" class="side-nav-item" data-label="Family">👨‍👩‍👧</a>
+  <a href="Personal.html" class="side-nav-item active" data-label="Personal">💝</a>
+</nav>
+
+<nav class="nav">
+  <a href="homepage.html" class="nav-brand">My <span>Scrapbook</span></a>
+  <div class="nav-actions">
+    <a href="homepage.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
+    <button class="btn btn-danger" onclick="logout()">Sign Out</button>
+  </div>
+</nav>
+
+<!-- Left Sidebar Nav -->
+<nav class="side-nav">
+  <a href="homepage.html" class="side-nav-item sn-home" title="Home">
+    <div class="side-nav-pill">🏠</div>
+    <span class="side-nav-label">Home</span>
+  </a>
+  <div class="side-nav-sep"></div>
+  <a href="Collection.html" class="side-nav-item sn-collection" title="Collection">
+    <div class="side-nav-pill">📦</div>
+    <span class="side-nav-label">My Collection</span>
+  </a>
+  <a href="Education.html" class="side-nav-item sn-education" title="Education">
+    <div class="side-nav-pill">🎓</div>
+    <span class="side-nav-label">Education</span>
+  </a>
+  <a href="Family.html" class="side-nav-item sn-family" title="Family">
+    <div class="side-nav-pill">👨‍👩‍👧</div>
+    <span class="side-nav-label">Family</span>
+  </a>
+  <a href="Personal.html" class="side-nav-item sn-personal active" title="Personal">
+    <div class="side-nav-pill">💝</div>
+    <span class="side-nav-label">Personal</span>
+  </a>
+</nav>
+
+<div class="page-header fade-up">
+  <span class="tag tag-rose">💝 Chapter Four</span>
+  <h1>Personal</h1>
+  <p>My personal life, hobbies, and precious everyday moments</p>
+</div>
+
+<div class="container">
+  <div class="info-section fade-up">
+    <img src="Personal/p5.jpg" alt="Personal" onerror="this.style.background='var(--parchment)'">
+    <div class="info-text">
+      <h2>My Personal Life</h2>
+      <p>I was born in Pampanga in 2008, but my life changed when my family moved to Quezon City. Growing up in a new city was challenging, but I quickly adjusted. I started my education at Quirino Elementary School, where I studied from kindergarten to Grade 6. That school became my second home, and I made a lot of memories and friends.</p>
+      <p>After elementary, I transferred to Don Quintin Calderon High School for Grades 7 and 8. The experience was different, and I learned to adapt to new environments and people. Then I moved to Tierra Monte School for Grade 9, and later transferred to NCBA for Grade 10. Unfortunately, I had to stop studying for one year, which was a hard time for me. But I didn't give up.</p>
+      <p>Now, I am continuing my journey at Quirino High School, and I chose the TVL ICT strand. This is my story — it taught me the value of perseverance, growth, and following what I'm passionate about.</p>
+      <a href="personal_album.html" class="btn btn-gold">See All Photos →</a>
+    </div>
+  </div>
+
+  <div style="margin-bottom:20px;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--dark);">Photo Gallery</h2>
+  </div>
+
+  <div class="photo-grid">
+    <div class="polaroid fade-up"><img src="Personal/p1.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Myself</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p2.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Life</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p3.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Moments</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p4.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Growth</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p5.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Me</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p6.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Journey</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p7.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Story</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p8.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Today</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p9.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Adventures</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p10.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Smiles</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p11.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Portrait</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p12.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Candid</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p13.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Favorite</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p14.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Precious</div></div>
+    <div class="polaroid fade-up"><img src="Personal/p15.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Memories</div></div>
+  </div>
+</div>
+
+<footer class="page-footer">© 2025 Ezekiel Guile Lantin · My Digital Scrapbook</footer>
+<script>
+const dot=document.getElementById('cursor-dot'),glow=document.getElementById('cursor-glow');
+let mx=0,my=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){gx+=(mx-gx)*0.12;gy+=(my-gy)*0.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{glow.style.transform='translate(-50%,-50%) scale(1.8)';glow.style.background='rgba(201,148,58,0.12)';});el.addEventListener('mouseleave',()=>{glow.style.transform='translate(-50%,-50%) scale(1)';glow.style.background='transparent';});});
+function logout(){if(confirm('Sign out?')){window.location.href='index.html';}}
+</script>
+<script src="sidenav.js"></script>
+<script>buildSidenav('personal');</script>
+</body>
+</html>

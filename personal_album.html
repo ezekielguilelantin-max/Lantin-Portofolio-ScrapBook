@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Album — Scrapbook</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;}
+.album-item{position:relative;overflow:hidden;border-radius:14px;box-shadow:0 4px 20px rgba(28,26,46,0.12);cursor:none;background:var(--parchment);aspect-ratio:1;}
+.album-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+.album-item:hover img{transform:scale(1.1);}
+.album-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(28,26,46,0.4) 0%,transparent 50%);opacity:0;transition:opacity 0.3s;}
+.album-item:hover::after{opacity:1;}
+.lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(15,13,26,0.95);backdrop-filter:blur(20px);align-items:center;justify-content:center;cursor:none;}
+.lightbox.active{display:flex;}
+.lightbox img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,0.6);animation:fadeUp 0.25s both;}
+.lb-close{position:absolute;top:20px;right:24px;font-size:2rem;color:rgba(255,255,255,0.6);cursor:none;background:none;border:none;font-family:'DM Sans',sans-serif;line-height:1;transition:color 0.2s;}
+.lb-close:hover{color:white;}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);color:white;font-size:1.5rem;padding:12px 18px;border-radius:50px;cursor:none;border:none;transition:background 0.3s;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,0.2);}
+.lb-prev{left:20px;}.lb-next{right:20px;}
+</style>
+</head>
+<body class="has-sidenav">
+<div id="cursor-dot"></div>
+<div id="cursor-glow"></div>
+<nav class="side-nav">
+  <a href="homepage.html" class="side-nav-item" data-label="Home">🏠</a>
+  <div class="side-nav-divider"></div>
+  <a href="Collection.html" class="side-nav-item" data-label="Collection">📦</a>
+  <a href="Education.html" class="side-nav-item" data-label="Education">🎓</a>
+  <a href="Family.html" class="side-nav-item" data-label="Family">👨‍👩‍👧</a>
+  <a href="Personal.html" class="side-nav-item active" data-label="Personal">💝</a>
+</nav>
+<nav class="nav">
+  <a href="homepage.html" class="nav-brand">My <span>Scrapbook</span></a>
+  <div class="nav-actions">
+    <a href="Personal.html" class="btn-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>Back</a>
+  </div>
+</nav>
+
+<!-- Left Sidebar Nav -->
+<nav class="side-nav">
+  <a href="homepage.html" class="side-nav-item sn-home" title="Home">
+    <div class="side-nav-pill">🏠</div>
+    <span class="side-nav-label">Home</span>
+  </a>
+  <div class="side-nav-sep"></div>
+  <a href="Collection.html" class="side-nav-item sn-collection" title="Collection">
+    <div class="side-nav-pill">📦</div>
+    <span class="side-nav-label">My Collection</span>
+  </a>
+  <a href="Education.html" class="side-nav-item sn-education" title="Education">
+    <div class="side-nav-pill">🎓</div>
+    <span class="side-nav-label">Education</span>
+  </a>
+  <a href="Family.html" class="side-nav-item sn-family" title="Family">
+    <div class="side-nav-pill">👨‍👩‍👧</div>
+    <span class="side-nav-label">Family</span>
+  </a>
+  <a href="Personal.html" class="side-nav-item sn-personal active" title="Personal">
+    <div class="side-nav-pill">💝</div>
+    <span class="side-nav-label">Personal</span>
+  </a>
+</nav>
+<div class="page-header fade-up">
+  <span class="tag tag-rose">💝 Full Album</span>
+  <h1>Personal Gallery</h1>
+  <p>Click any photo to view it larger</p>
+</div>
+<div class="container">
+  <div class="album-grid" id="albumGrid">
+    <div class="album-item fade-up"><img src="Personal/p1.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(0)"></div>
+    <div class="album-item fade-up"><img src="Personal/p2.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(1)"></div>
+    <div class="album-item fade-up"><img src="Personal/p3.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(2)"></div>
+    <div class="album-item fade-up"><img src="Personal/p4.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(3)"></div>
+    <div class="album-item fade-up"><img src="Personal/p5.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(4)"></div>
+    <div class="album-item fade-up"><img src="Personal/p6.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(5)"></div>
+    <div class="album-item fade-up"><img src="Personal/p7.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(6)"></div>
+    <div class="album-item fade-up"><img src="Personal/p8.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(7)"></div>
+    <div class="album-item fade-up"><img src="Personal/p9.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(8)"></div>
+    <div class="album-item fade-up"><img src="Personal/p10.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(9)"></div>
+    <div class="album-item fade-up"><img src="Personal/p11.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(10)"></div>
+    <div class="album-item fade-up"><img src="Personal/p12.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(11)"></div>
+    <div class="album-item fade-up"><img src="Personal/p13.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(12)"></div>
+    <div class="album-item fade-up"><img src="Personal/p14.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(13)"></div>
+    <div class="album-item fade-up"><img src="Personal/p15.jpg" onerror="this.style.background='var(--parchment)'" onclick="openLB(14)"></div>
+  </div>
+</div>
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <button class="lb-prev" onclick="shiftLB(-1,event)">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" onclick="shiftLB(1,event)">›</button>
+</div>
+<footer class="page-footer">© 2025 Ezekiel Guile Lantin · My Digital Scrapbook</footer>
+<script>
+const dot=document.getElementById('cursor-dot'),glow=document.getElementById('cursor-glow');
+let mx=0,my=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){gx+=(mx-gx)*0.12;gy+=(my-gy)*0.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loop);})();
+const imgs=[...document.querySelectorAll('#albumGrid img')];
+let cur=0;
+function openLB(i){cur=i;document.getElementById('lbImg').src=imgs[i].src;document.getElementById('lightbox').classList.add('active');}
+function closeLB(e){if(!e||e.target===document.getElementById('lightbox')||e.target.classList.contains('lb-close')){document.getElementById('lightbox').classList.remove('active');}}
+function shiftLB(d,e){if(e)e.stopPropagation();cur=(cur+d+imgs.length)%imgs.length;document.getElementById('lbImg').src=imgs[cur].src;}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')shiftLB(1);if(e.key==='ArrowLeft')shiftLB(-1);if(e.key==='Escape')closeLB();});
+</script>
+<script src="sidenav.js"></script>
+<script>buildSidenav('personal');</script>
+</body>
+</html>

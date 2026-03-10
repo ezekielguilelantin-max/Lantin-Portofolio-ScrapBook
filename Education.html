@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education — Scrapbook</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.info-section { border-top: 3px solid var(--sage); }
+</style>
+</head>
+<body class="has-sidenav">
+<div id="cursor-dot"></div>
+<div id="cursor-glow"></div>
+<nav class="side-nav">
+  <a href="homepage.html" class="side-nav-item" data-label="Home">🏠</a>
+  <div class="side-nav-divider"></div>
+  <a href="Collection.html" class="side-nav-item" data-label="Collection">📦</a>
+  <a href="Education.html" class="side-nav-item active" data-label="Education">🎓</a>
+  <a href="Family.html" class="side-nav-item" data-label="Family">👨‍👩‍👧</a>
+  <a href="Personal.html" class="side-nav-item" data-label="Personal">💝</a>
+</nav>
+
+<nav class="nav">
+  <a href="homepage.html" class="nav-brand">My <span>Scrapbook</span></a>
+  <div class="nav-actions">
+    <a href="homepage.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
+    <button class="btn btn-danger" onclick="logout()">Sign Out</button>
+  </div>
+</nav>
+
+<!-- Left Sidebar Nav -->
+<nav class="side-nav">
+  <a href="homepage.html" class="side-nav-item sn-home" title="Home">
+    <div class="side-nav-pill">🏠</div>
+    <span class="side-nav-label">Home</span>
+  </a>
+  <div class="side-nav-sep"></div>
+  <a href="Collection.html" class="side-nav-item sn-collection" title="Collection">
+    <div class="side-nav-pill">📦</div>
+    <span class="side-nav-label">My Collection</span>
+  </a>
+  <a href="Education.html" class="side-nav-item sn-education active" title="Education">
+    <div class="side-nav-pill">🎓</div>
+    <span class="side-nav-label">Education</span>
+  </a>
+  <a href="Family.html" class="side-nav-item sn-family" title="Family">
+    <div class="side-nav-pill">👨‍👩‍👧</div>
+    <span class="side-nav-label">Family</span>
+  </a>
+  <a href="Personal.html" class="side-nav-item sn-personal" title="Personal">
+    <div class="side-nav-pill">💝</div>
+    <span class="side-nav-label">Personal</span>
+  </a>
+</nav>
+
+<div class="page-header fade-up">
+  <span class="tag tag-sage">🎓 Chapter Two</span>
+  <h1>Education</h1>
+  <p>My academic journey from Pampanga to Quezon City</p>
+</div>
+
+<div class="container">
+  <div class="info-section fade-up">
+    <img src="Education/e8.jfif" alt="Education" onerror="this.style.background='var(--parchment)'">
+    <div class="info-text">
+      <h2>My Academic Story</h2>
+      <p>I was born in Pampanga in 2008, but my life changed when my family moved to Quezon City. Growing up in a new city was challenging, but I quickly adjusted. I started my education at Quirino Elementary School, where I studied from kindergarten to Grade 6. That school became my second home, and I made a lot of memories and friends.</p>
+      <p>After elementary, I transferred to Don Quintin Calderon High School for Grades 7 and 8. Then I moved to Tierra Monte School for Grade 9, and later transferred to NCBA for Grade 10. Unfortunately, I had to stop studying for one year — a hard time — but I didn't give up.</p>
+      <p>Now, I am continuing my journey at Quirino High School with the TVL ICT strand. I chose this because I really want to learn more about computers and technology. I'm excited to explore skills like programming, troubleshooting, and web development.</p>
+      <a href="education_album.html" class="btn btn-gold">See All Photos →</a>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div style="margin-bottom:40px;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--dark);margin-bottom:20px;">Academic Timeline</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+      <div style="background:var(--glass);border:1px solid var(--border);border-left:4px solid var(--sage);border-radius:12px;padding:18px 20px;backdrop-filter:blur(10px);">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;">K–Grade 6</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--dark);">Quirino Elementary</div>
+      </div>
+      <div style="background:var(--glass);border:1px solid var(--border);border-left:4px solid var(--sage);border-radius:12px;padding:18px 20px;backdrop-filter:blur(10px);">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;">Grades 7–8</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--dark);">Don Quintin Calderon</div>
+      </div>
+      <div style="background:var(--glass);border:1px solid var(--border);border-left:4px solid var(--sage);border-radius:12px;padding:18px 20px;backdrop-filter:blur(10px);">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;">Grade 9</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--dark);">Tierra Monte School</div>
+      </div>
+      <div style="background:var(--glass);border:1px solid var(--border);border-left:4px solid var(--sage);border-radius:12px;padding:18px 20px;backdrop-filter:blur(10px);">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;">Grade 10</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--dark);">NCBA</div>
+      </div>
+      <div style="background:rgba(111,168,143,0.1);border:1px solid rgba(111,168,143,0.3);border-left:4px solid var(--sage);border-radius:12px;padding:18px 20px;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);margin-bottom:6px;">Current ✦</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--dark);">Quirino HS · TVL ICT</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="margin-bottom:20px;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--dark);">Photo Gallery</h2>
+  </div>
+
+  <div class="photo-grid">
+    <div class="polaroid fade-up"><img src="Education/e1.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">School days</div></div>
+    <div class="polaroid fade-up"><img src="Education/e2.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Learning</div></div>
+    <div class="polaroid fade-up"><img src="Education/e3.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Study time</div></div>
+    <div class="polaroid fade-up"><img src="Education/e4.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Graduation</div></div>
+    <div class="polaroid fade-up"><img src="Education/e5.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Memories</div></div>
+    <div class="polaroid fade-up"><img src="Education/e6.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Campus</div></div>
+    <div class="polaroid fade-up"><img src="Education/e7.jfif" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Classmates</div></div>
+    <div class="polaroid fade-up"><img src="Education/e8.jfif" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Friends</div></div>
+    <div class="polaroid fade-up"><img src="Education/e9.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Events</div></div>
+    <div class="polaroid fade-up"><img src="Education/e10.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Milestones</div></div>
+    <div class="polaroid fade-up"><img src="Education/e11.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Achievement</div></div>
+    <div class="polaroid fade-up"><img src="Education/e12.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Growth</div></div>
+    <div class="polaroid fade-up"><img src="Education/e13.jfif" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Honor</div></div>
+    <div class="polaroid fade-up"><img src="Education/e14.jfif" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Pride</div></div>
+    <div class="polaroid fade-up"><img src="Education/e15.jfif" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Journey</div></div>
+  </div>
+</div>
+
+<footer class="page-footer">© 2025 Ezekiel Guile Lantin · My Digital Scrapbook</footer>
+<script>
+const dot=document.getElementById('cursor-dot'),glow=document.getElementById('cursor-glow');
+let mx=0,my=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){gx+=(mx-gx)*0.12;gy+=(my-gy)*0.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{glow.style.transform='translate(-50%,-50%) scale(1.8)';glow.style.background='rgba(201,148,58,0.12)';});el.addEventListener('mouseleave',()=>{glow.style.transform='translate(-50%,-50%) scale(1)';glow.style.background='transparent';});});
+function logout(){if(confirm('Sign out?')){window.location.href='index.html';}}
+</script>
+<script src="sidenav.js"></script>
+<script>buildSidenav('education');</script>
+</body>
+</html>
