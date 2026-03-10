@@ -1,1 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Collection — Scrapbook</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.accent { color: var(--coral); }
+.info-section img { border-color: rgba(217,115,94,0.3); }
+.info-section { border-top: 3px solid var(--coral); }
+</style>
+</head>
+<body class="has-sidenav">
+<div id="cursor-dot"></div>
+<div id="cursor-glow"></div>
+<nav class="side-nav">
+  <a href="index.html" class="side-nav-item" data-label="Home">🏠</a>
+  <div class="side-nav-divider"></div>
+  <a href="Collection.html" class="side-nav-item active" data-label="Collection">📦</a>
+  <a href="Education.html" class="side-nav-item" data-label="Education">🎓</a>
+  <a href="Family.html" class="side-nav-item" data-label="Family">👨‍👩‍👧</a>
+  <a href="Personal.html" class="side-nav-item" data-label="Personal">💝</a>
+</nav>
 
+<nav class="nav">
+  <a href="index.html" class="nav-brand">My <span>Scrapbook</span></a>
+  <div class="nav-actions">
+    <a href="index.html" class="btn-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light theme">🌙</button>
+    <button class="btn btn-danger" onclick="logout()">Sign Out</button>
+  </div>
+</nav>
+
+<!-- Left Sidebar Nav -->
+<nav class="side-nav">
+  <a href="homepage.html" class="side-nav-item sn-home" title="Home">
+    <div class="side-nav-pill">🏠</div>
+    <span class="side-nav-label">Home</span>
+  </a>
+  <div class="side-nav-sep"></div>
+  <a href="Collection.html" class="side-nav-item sn-collection active" title="Collection">
+    <div class="side-nav-pill">📦</div>
+    <span class="side-nav-label">My Collection</span>
+  </a>
+  <a href="Education.html" class="side-nav-item sn-education" title="Education">
+    <div class="side-nav-pill">🎓</div>
+    <span class="side-nav-label">Education</span>
+  </a>
+  <a href="Family.html" class="side-nav-item sn-family" title="Family">
+    <div class="side-nav-pill">👨‍👩‍👧</div>
+    <span class="side-nav-label">Family</span>
+  </a>
+  <a href="Personal.html" class="side-nav-item sn-personal" title="Personal">
+    <div class="side-nav-pill">💝</div>
+    <span class="side-nav-label">Personal</span>
+  </a>
+</nav>
+
+<div class="page-header fade-up">
+  <span class="tag tag-coral">📦 Chapter Three</span>
+  <h1>My Collection</h1>
+  <p>A showcase of things I collect and treasure</p>
+</div>
+
+<div class="container">
+  <div class="info-section fade-up">
+    <img src="Collection/c5.jpg" alt="Collection" onerror="this.style.background='var(--parchment)'">
+    <div class="info-text">
+      <h2>Collection Purposes</h2>
+      <p>I was born in Pampanga in 2008, but my life changed when my family moved to Quezon City. Growing up in a new city was challenging, but I quickly adjusted. I started my education at Quirino Elementary School, where I studied from kindergarten to Grade 6. That school became my second home, and I made a lot of memories and friends. Those years helped build the foundation of my learning and confidence.</p>
+      <p>After elementary, I transferred to Don Quintin Calderon High School for Grades 7 and 8. The experience was different, and I learned to adapt to new environments and people. Then I moved to Tierra Monte School for Grade 9, and later transferred to NCBA for Grade 10. Unfortunately, I had to stop studying for one year, which was a hard time for me. But I didn't give up because I knew education is important for my future.</p>
+      <p>Now, I am continuing my journey at Quirino High School, and I chose the TVL ICT strand. I believe that learning ICT will open many opportunities for me in the future. I'm excited to explore skills like programming, troubleshooting, and web development.</p>
+      <a href="collection_album.html" class="btn btn-gold">See All Photos →</a>
+    </div>
+  </div>
+
+  <div class="section-heading" style="padding:0 0 20px; margin:0;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--dark);">Photo Gallery</h2>
+  </div>
+
+  <div class="photo-grid">
+    <div class="polaroid fade-up"><img src="collection/p3.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Memory</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection1.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Collection</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection2.jfif" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Treasure</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection3.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Keep</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection4.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Collect</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection5.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Memories</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection6.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Special</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection7.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Valued</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection8.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Rare</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection9.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Find</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection10.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Kept</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection11.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Favorite</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection12.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Prized</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection13.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Cherished</div></div>
+    <div class="polaroid fade-up"><img src="collection/collection14.jpg" onerror="this.style.background='var(--parchment)'"><div class="polaroid-caption">Prized</div></div>
+  </div>
+</div>
+
+<footer class="page-footer">© 2025 Ezekiel Guile Lantin · My Digital Scrapbook</footer>
+<script>
+// Authentication Check
+function checkAuthentication() {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if (!isLoggedIn) {
+    window.location.href = 'login.html';
+  }
+}
+
+// Logout Function
+function logout() {
+  if (confirm('Are you sure you want to sign out?')) {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('rememberUsername');
+    window.location.href = 'login.html';
+  }
+}
+
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+
+function initializeTheme() {
+  const savedTheme = localStorage.getItem('scrapbookTheme') || 'light';
+  html.classList.toggle('dark-theme', savedTheme === 'dark');
+  updateThemeButton(savedTheme === 'dark');
+}
+
+function updateThemeButton(isDark) {
+  if (themeToggle) {
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+    themeToggle.title = isDark ? 'Switch to Light theme' : 'Switch to Dark theme';
+  }
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isDark = html.classList.toggle('dark-theme');
+    localStorage.setItem('scrapbookTheme', isDark ? 'dark' : 'light');
+    updateThemeButton(isDark);
+  });
+}
+
+// Cursor effect
+const dot=document.getElementById('cursor-dot'),glow=document.getElementById('cursor-glow');
+let mx=0,my=0,gx=0,gy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){gx+=(mx-gx)*0.12;gy+=(my-gy)*0.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{glow.style.transform='translate(-50%,-50%) scale(1.8)';glow.style.background='rgba(201,148,58,0.12)';});el.addEventListener('mouseleave',()=>{glow.style.transform='translate(-50%,-50%) scale(1)';glow.style.background='transparent';});});
+
+// Initialize theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+  checkAuthentication();
+  initializeTheme();
+});
+</script>
+<script src="sidenav.js"></script>
+<script>buildSidenav('collection');</script>
+</body>
+</html>
